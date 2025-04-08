@@ -16,7 +16,7 @@ A professional-grade, single-page React application for collecting and managing 
 ## Tech Stack
 
 ### Frontend
-- React 18 (with Vite)
+- React 19 (with Vite)
 - TailwindCSS for styling with custom design system
 - JavaScript ES6+
 - Custom hooks for state management
@@ -58,6 +58,11 @@ A professional-grade, single-page React application for collecting and managing 
      ```
      PORT=5000
      MONGODB_URI=your_mongodb_connection_string
+     FRONTEND_URL=http://localhost:5173
+     ```
+   - Create a `.env` file in the frontend directory with the following variable:
+     ```
+     VITE_BACKENED_URL=http://localhost:5000
      ```
 
 ### Running the Application
@@ -95,18 +100,18 @@ FeedbackCollector/
 
 ## Design Patterns
 
-### Modern UI Design
-- **Minimalistic Approach**: Clean interfaces with ample white space for better readability
-- **Card-Based Layout**: Content organized in well-defined cards with subtle shadows and borders
-- **Iconography**: Meaningful icons to enhance visual communication
-- **Consistent Color Scheme**: Harmonious color palette that works in both light and dark modes
-- **Micro-interactions**: Subtle animations and transitions for better user experience
+### UI Design
+- Clean interfaces with white space
+- Card-based layout
+- Meaningful icons
+- Consistent colors for light and dark modes
+- Subtle animations
 
-### Backend Architecture
-- **MVC Pattern**: Separation of Models, Views (Routes), and Controllers
-- **Modular Structure**: Code organized in dedicated folders by functionality
-- **Middleware Pattern**: Reusable middleware for error handling and request processing
-- **Repository Pattern**: Data access logic encapsulated in models
+### Backend Structure
+- MVC Pattern
+- Modular organization
+- Middleware for error handling
+- Data access in models
 
 ## License
 

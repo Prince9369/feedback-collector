@@ -5,6 +5,7 @@ import { submitFeedback } from '../api/feedbackApi';
  * Feedback form component (JSDoc)
  * @returns {JSX.Element} - Feedback form
  */
+
 const FeedbackForm = () => {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -159,7 +160,7 @@ const FeedbackForm = () => {
               name="fullName"
               value={formData.fullName}
               onChange={handleChange}
-              placeholder="John Doe"
+              placeholder="Ayush Raj"
               className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition duration-200 ${
                 errors.fullName
                   ? 'border-red-500 focus:ring-red-500 bg-red-50 dark:bg-red-900/10'
