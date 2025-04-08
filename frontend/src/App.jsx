@@ -1,16 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import FeedbackForm from './components/FeedbackForm';
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition duration-200">
     
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
