@@ -5,14 +5,17 @@
  */
 export const submitFeedback = async (feedbackData) => {
   try {
-    const response = await fetch(`${import.meta.env.VITE_BACKENED_URL}/submit-feedback`, {
+    // Use environment variable or fallback to relative path for production
+    const API_URL = import.meta.env.VITE_API_URL || '';
+
+    const response = await fetch(`${API_URL}/api/submit-feedback`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(feedbackData),
     });
-    
+
     if (!response.ok) {
       throw new Error('Failed to submit feedback');
     }
@@ -31,12 +34,15 @@ export const submitFeedback = async (feedbackData) => {
 
 export const getFeedbacks = async () => {
   try {
-    const response = await fetch(`${import.meta.env.VITE_BACKENED_URL}/feedbacks`);
-    
+    // Use environment variable or fallback to relative path for production
+    const API_URL = import.meta.env.VITE_API_URL || '';
+
+    const response = await fetch(`${API_URL}/api/feedbacks`);
+
     if (!response.ok) {
       throw new Error('Failed to fetch feedbacks');
     }
-    
+
     return await response.json();
   } catch (error) {
     console.error('Error fetching feedbacks:', error);

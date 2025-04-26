@@ -1,0 +1,9 @@
+{
+  "name": "feedback-collector-functions",
+  "version": "1.0.0",
+  "description": "Netlify Functions for Feedback Collector",
+  "main": "index.js",
+  "dependencies": {
+    "mongodb": "^5.0.0"
+  }
+}

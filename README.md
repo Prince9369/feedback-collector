@@ -117,6 +117,36 @@ FeedbackCollector/
 
 This project is licensed under the MIT License – see the [LICENSE](./LICENSE) file for more details.
 
-## Author
+## Deployment
 
-Sujal Raj
+### One-Click Deployment
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/yourusername/feedback-collector)
+
+### Manual Deployment to Netlify
+
+1. Create a new site on Netlify:
+   - Go to [Netlify](https://app.netlify.com/)
+   - Sign in or create an account
+   - Click "New site from Git"
+   - Connect to your GitHub repository
+   - Select the repository
+
+2. Configure build settings:
+   - Build command: `cd frontend && npm run build`
+   - Publish directory: `frontend/dist`
+   - Click "Deploy site"
+
+3. Set up environment variables:
+   - Go to Site settings > Build & deploy > Environment
+   - Add the following environment variables:
+     - `MONGODB_URI`: Your MongoDB connection string
+
+4. Trigger a new deploy:
+   - Go to the Deploys tab
+   - Click "Trigger deploy"
+
+## Authors
+
+- Original:Prince
+

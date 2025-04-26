@@ -109,19 +109,23 @@ const FeedbackForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 transition duration-200 border border-gray-100 dark:border-gray-700">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white flex items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-blue-500 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-        </svg>
-        Share Your Feedback
-      </h2>
+    <div className="max-w-md mx-auto bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-xl shadow-xl p-8 transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:shadow-blue-100 dark:hover:shadow-blue-900/20">
+      <div className="relative mb-8">
+        <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg transform rotate-12 opacity-70 blur-sm"></div>
+        <h2 className="relative text-2xl font-bold mb-1 text-gray-800 dark:text-white flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-blue-500 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+          </svg>
+          Share Your Feedback
+        </h2>
+        <p className="text-gray-500 dark:text-gray-400 text-sm">We value your input to improve our services</p>
+      </div>
 
       {submitStatus && (
         <div
-          className={`mb-6 p-4 rounded-lg flex items-start ${
+          className={`mb-6 p-4 rounded-lg flex items-start transform transition-all duration-300 ${
             submitStatus.type === 'success'
-              ? 'bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-200'
+              ? 'bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-200 animate-pulse'
               : 'bg-red-50 text-red-700 dark:bg-red-900/30 dark:text-red-200'
           }`}
         >
@@ -141,16 +145,16 @@ const FeedbackForm = () => {
       )}
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div>
+        <div className="group">
           <label
             htmlFor="fullName"
-            className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300"
+            className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200"
           >
             Full Name
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400 dark:text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400 dark:text-gray-500 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-200" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
               </svg>
             </div>
@@ -161,15 +165,15 @@ const FeedbackForm = () => {
               value={formData.fullName}
               onChange={handleChange}
               placeholder="Ayush Raj"
-              className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition duration-200 ${
+              className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-200 ${
                 errors.fullName
                   ? 'border-red-500 focus:ring-red-500 bg-red-50 dark:bg-red-900/10'
-                  : 'border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:bg-gray-700 dark:text-white'
+                  : 'border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:bg-gray-700 dark:text-white hover:border-blue-300 dark:hover:border-blue-500'
               }`}
             />
           </div>
           {errors.fullName && (
-            <p className="mt-2 text-sm text-red-600 dark:text-red-400 flex items-center">
+            <p className="mt-2 text-sm text-red-600 dark:text-red-400 flex items-center animate-pulse">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
               </svg>
@@ -178,16 +182,16 @@ const FeedbackForm = () => {
           )}
         </div>
 
-        <div>
+        <div className="group">
           <label
             htmlFor="email"
-            className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300"
+            className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200"
           >
             Email
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400 dark:text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400 dark:text-gray-500 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-200" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
               </svg>
@@ -199,15 +203,15 @@ const FeedbackForm = () => {
               value={formData.email}
               onChange={handleChange}
               placeholder="email@example.com"
-              className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition duration-200 ${
+              className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-200 ${
                 errors.email
                   ? 'border-red-500 focus:ring-red-500 bg-red-50 dark:bg-red-900/10'
-                  : 'border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:bg-gray-700 dark:text-white'
+                  : 'border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:bg-gray-700 dark:text-white hover:border-blue-300 dark:hover:border-blue-500'
               }`}
             />
           </div>
           {errors.email && (
-            <p className="mt-2 text-sm text-red-600 dark:text-red-400 flex items-center">
+            <p className="mt-2 text-sm text-red-600 dark:text-red-400 flex items-center animate-pulse">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
               </svg>
@@ -216,16 +220,16 @@ const FeedbackForm = () => {
           )}
         </div>
 
-        <div>
+        <div className="group">
           <label
             htmlFor="message"
-            className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300"
+            className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200"
           >
             Feedback Message
           </label>
           <div className="relative">
             <div className="absolute top-3 left-3 flex items-start pointer-events-none">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400 dark:text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400 dark:text-gray-500 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-200" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z" clipRule="evenodd" />
               </svg>
             </div>
@@ -236,15 +240,15 @@ const FeedbackForm = () => {
               onChange={handleChange}
               rows="4"
               placeholder="Please share your thoughts or feedback here..."
-              className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition duration-200 ${
+              className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-200 ${
                 errors.message
                   ? 'border-red-500 focus:ring-red-500 bg-red-50 dark:bg-red-900/10'
-                  : 'border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:bg-gray-700 dark:text-white'
+                  : 'border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:bg-gray-700 dark:text-white hover:border-blue-300 dark:hover:border-blue-500'
               }`}
             ></textarea>
           </div>
           {errors.message && (
-            <p className="mt-2 text-sm text-red-600 dark:text-red-400 flex items-center">
+            <p className="mt-2 text-sm text-red-600 dark:text-red-400 flex items-center animate-pulse">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
               </svg>
@@ -256,7 +260,7 @@ const FeedbackForm = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-blue-500 dark:hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow flex items-center justify-center"
+          className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center"
         >
           {isSubmitting ? (
             <span className="flex items-center justify-center">

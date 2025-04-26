@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL,
+  origin: '*', // Allow all origins for development
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type']
 }));
@@ -22,14 +22,13 @@ app.use(express.urlencoded({ extended: true }));
 // Connect to MongoDB
 connectDB();
 
-
 // API Routes
 app.get('/', (req, res) => {
   res.json({ status: 'Server is running' });
 });
 
 // Use routes
-app.use(feedbackRoutes);
+app.use('/api', feedbackRoutes);
 
 // Error handling middleware
 app.use(notFound);
