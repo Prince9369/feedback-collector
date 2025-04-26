@@ -22,7 +22,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="ml-3">
-              <p className="font-medium text-gray-700 dark:text-gray-300"> Designed by <strong className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 group-hover:from-indigo-500 group-hover:to-purple-500 transition-all duration-300">Prince</strong></p>
+              <p className="font-medium text-gray-700 dark:text-gray-300"> Designed by <strong className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 group-hover:from-indigo-500 group-hover:to-purple-500 transition-all duration-300">Prince Seth</strong></p>
             </div>
           </div>
 
@@ -48,7 +48,7 @@ const Footer = () => {
             <span>All Rights Reserved</span>
           </div>
           <div className="mt-2 text-gray-400 dark:text-gray-600">
-            Made with ❤️ and modern web technologies
+            Made with ❤️ by Prince Seth
           </div>
         </div>
       </div>
