@@ -3,7 +3,7 @@ const { MongoClient } = require('mongodb');
 
 // MongoDB connection string from environment variable
 const MONGODB_URI = process.env.MONGODB_URI;
-const DB_NAME = 'feedback-collector';
+const DB_NAME = 'feedback';
 const COLLECTION_NAME = 'feedbacks';
 
 // Handler function for the API endpoint
@@ -65,18 +65,18 @@ exports.handler = async (event, context) => {
   try {
     client = new MongoClient(MONGODB_URI);
     await client.connect();
-    
+
     const database = client.db(DB_NAME);
     const collection = database.collection(COLLECTION_NAME);
-    
+
     // Insert the feedback
     const result = await collection.insertOne(feedbackData);
-    
+
     return {
       statusCode: 201,
       headers,
-      body: JSON.stringify({ 
-        success: true, 
+      body: JSON.stringify({
+        success: true,
         feedback: { ...feedbackData, _id: result.insertedId }
       })
     };

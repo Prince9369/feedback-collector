@@ -3,7 +3,7 @@ const { MongoClient } = require('mongodb');
 
 // MongoDB connection string from environment variable
 const MONGODB_URI = process.env.MONGODB_URI;
-const DB_NAME = 'feedback-collector';
+const DB_NAME = 'feedback';
 const COLLECTION_NAME = 'feedbacks';
 
 // Handler function for the API endpoint
@@ -38,15 +38,15 @@ exports.handler = async (event, context) => {
   try {
     client = new MongoClient(MONGODB_URI);
     await client.connect();
-    
+
     const database = client.db(DB_NAME);
     const collection = database.collection(COLLECTION_NAME);
-    
+
     // Get all feedbacks, sorted by timestamp (newest first)
     const feedbacks = await collection.find({})
       .sort({ timestamp: -1 })
       .toArray();
-    
+
     return {
       statusCode: 200,
       headers,
