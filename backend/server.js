@@ -11,16 +11,38 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors({
-  origin: '*', // Allow all origins for development
+// Configure CORS to allow requests from the frontend
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps, curl requests)
+    if (!origin) return callback(null, true);
+
+    // Check if the origin is allowed
+    const allowedOrigins = [
+      process.env.FRONTEND_URL,
+      'http://localhost:5173',
+      'http://localhost:3000'
+    ];
+
+    // If deployed to Netlify, the domain will end with netlify.app
+    if (origin.endsWith('netlify.app') || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type']
-}));
+  allowedHeaders: ['Content-Type'],
+  credentials: true
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Connect to MongoDB
 connectDB();
+
 
 // API Routes
 app.get('/', (req, res) => {
@@ -28,7 +50,7 @@ app.get('/', (req, res) => {
 });
 
 // Use routes
-app.use('/api', feedbackRoutes);
+app.use(feedbackRoutes);
 
 // Error handling middleware
 app.use(notFound);

@@ -5,10 +5,10 @@
  */
 export const submitFeedback = async (feedbackData) => {
   try {
-    // Use environment variable or fallback to relative path for production
-    const API_URL = import.meta.env.VITE_API_URL || '';
+    // Use environment variable for API URL or default to localhost in development
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
-    const response = await fetch(`${API_URL}/api/submit-feedback`, {
+    const response = await fetch(`${API_URL}/submit-feedback`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -34,10 +34,10 @@ export const submitFeedback = async (feedbackData) => {
 
 export const getFeedbacks = async () => {
   try {
-    // Use environment variable or fallback to relative path for production
-    const API_URL = import.meta.env.VITE_API_URL || '';
+    // Use environment variable for API URL or default to localhost in development
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
-    const response = await fetch(`${API_URL}/api/feedbacks`);
+    const response = await fetch(`${API_URL}/feedbacks`);
 
     if (!response.ok) {
       throw new Error('Failed to fetch feedbacks');
